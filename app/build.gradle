@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+
+ext.supportLibraryVersionValue = '28.0.0'
+ext.daggerLibraryVersionValue = '2.17'
+ext.retrofitVersionValue = '2.4.0'
+ext.glideVersionValue = '4.9.0'
+ext.trueTimeVersionValue = '3.4'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.streetsmart.app"
+        minSdkVersion 22
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // standard support library
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+
+    // Upgrade this to stable version
+    implementation 'androidx.browser:browser:1.0.0'
+    implementation 'androidx.core:core:1.0.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.0'
+    implementation 'androidx.preference:preference:1.0.0'
+
+    // lombok for boilerplate code
+    compileOnly 'org.projectlombok:lombok:1.16.20'
+    annotationProcessor 'org.projectlombok:lombok:1.16.20'
+
+    // butterknife for view injection
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersionValue}"
+    implementation "com.squareup.retrofit2:converter-jackson:${retrofitVersionValue}"
+
+    // OkHttp
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+
+    // Dagger
+    implementation "com.google.dagger:dagger:${daggerLibraryVersionValue}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerLibraryVersionValue}"
+    api "com.google.dagger:dagger-android:${daggerLibraryVersionValue}"
+    implementation "com.google.dagger:dagger-android-support:${daggerLibraryVersionValue}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${daggerLibraryVersionValue}"
+
+    // RxJava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersionValue}"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:${glideVersionValue}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${glideVersionValue}"
+    implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersionValue}"
+
+
+}
