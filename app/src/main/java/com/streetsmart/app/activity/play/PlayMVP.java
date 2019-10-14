@@ -1,9 +1,11 @@
 package com.streetsmart.app.activity.play;
 
+import com.streetsmart.app.data.GameQuestionsRecord;
+
 public interface PlayMVP {
 
     interface View {
-        void updateData();
+        void updateData(GameQuestionsRecord record);
         void showRefreshLoader(boolean loadingStatus);
         void clearData();
         void showSnackbar(String msg);

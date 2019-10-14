@@ -17,5 +17,7 @@ public class MainActivity extends AppCompatActivity {
         //IntentWrapper.startRewardsActivity(trhis);
         IntentWrapper.startPlayActivity(this);
         //IntentWrapper.startLeaderboardActivity(this);
+
+        finish();
     }
 }
