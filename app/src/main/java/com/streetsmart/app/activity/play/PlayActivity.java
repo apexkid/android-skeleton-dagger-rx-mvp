@@ -31,9 +31,17 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     @BindView(R.id.timer)
     TextView timerTextView;
 
+    @BindView(R.id.question_count)
+    TextView questionCountTextView;
+
     private FragmentManager fragmentManager;
 
+    private CountDownTimer countdown;
+
     private static final int GAME_TIME_IN_SECONDS = 30;
+    private static final int GAME_QUESTIONS_COUNT = 10;
+
+    private int questionsAnswered = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
         fragmentManager = getSupportFragmentManager();
         timerTextView.setText("seconds remaining: " + GAME_TIME_IN_SECONDS);
+        questionCountTextView.setText(questionsAnswered + " / " + GAME_QUESTIONS_COUNT);
     }
 
     @Override
@@ -58,15 +67,18 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     @Override
     public void startGame() {
         launchTextQuestionFragment();
-        new CountDownTimer(GAME_TIME_IN_SECONDS * 1000, 1000) {
+        countdown = new CountDownTimer(GAME_TIME_IN_SECONDS * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
             }
+
             public void onFinish() {
                 timerTextView.setText("Time Up!");
                 launchEndGameFragment();
             }
-        }.start();
+        };
+
+        countdown.start();
     }
 
     private void launchStartGameFragment() {
@@ -130,6 +142,13 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     @Override
     public void onAnswerSelect(Set<String> selectedAnswer) {
         launchTextQuestionFragment();
+        questionsAnswered++;
+        questionCountTextView.setText(questionsAnswered + " / " + GAME_QUESTIONS_COUNT);
         Toast.makeText(this, "Answer selected=" + selectedAnswer.toString(), Toast.LENGTH_SHORT).show();
+
+        if(questionsAnswered == GAME_QUESTIONS_COUNT) {
+            countdown.cancel();
+            launchEndGameFragment();
+        }
     }
 }
