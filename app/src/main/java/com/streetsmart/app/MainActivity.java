@@ -13,6 +13,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        IntentWrapper.startDashboardActivity(this);
+        //IntentWrapper.startDashboardActivity(this);
+        //IntentWrapper.startRewardsActivity(trhis);
+        IntentWrapper.startPlayActivity(this);
+        //IntentWrapper.startLeaderboardActivity(this);
     }
 }
