@@ -26,7 +26,7 @@
             android:id="@+id/question_option_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="50dp"
+            android:minHeight="30dp"
             android:layout_margin="16dp"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -36,7 +36,7 @@
             android:id="@+id/question_option_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="50dp"
+            android:minHeight="30dp"
             android:layout_margin="16dp"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -46,7 +46,7 @@
             android:id="@+id/question_option_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="50dp"
+            android:minHeight="30dp"
             android:layout_margin="16dp"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -56,11 +56,30 @@
             android:id="@+id/question_option_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="50dp"
+            android:minHeight="30dp"
             android:layout_margin="16dp"
             android:background="#FFFFFF"
             android:gravity="center"
             android:text="This is option D" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:padding="16sp"
+                android:minHeight="30dp"
+                android:background="#FF00FF"
+                android:text="NEXT"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>

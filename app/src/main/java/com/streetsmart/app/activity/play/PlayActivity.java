@@ -3,15 +3,20 @@ package com.streetsmart.app.activity.play;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.streetsmart.app.R;
+import com.streetsmart.app.activity.play.endgame.EndGameFragment;
+import com.streetsmart.app.activity.play.startgame.StartGameFragment;
 import com.streetsmart.app.activity.play.textquestion.TextQuestionFragment;
 import com.streetsmart.app.data.GameQuestionsRecord;
 import com.streetsmart.app.root.StreetsmartApp;
+
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -28,6 +33,8 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     private FragmentManager fragmentManager;
 
+    private static final int GAME_TIME_IN_SECONDS = 30;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,30 +47,51 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         ButterKnife.bind(this);
 
         fragmentManager = getSupportFragmentManager();
-
+        timerTextView.setText("seconds remaining: " + GAME_TIME_IN_SECONDS);
     }
 
     @Override
     public void updateData(GameQuestionsRecord record) {
+        launchStartGameFragment();
+    }
 
+    @Override
+    public void startGame() {
         launchTextQuestionFragment();
-
-        new CountDownTimer(30000, 1000) {
+        new CountDownTimer(GAME_TIME_IN_SECONDS * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
             }
             public void onFinish() {
-                timerTextView.setText("done!");
+                timerTextView.setText("Time Up!");
+                launchEndGameFragment();
             }
         }.start();
+    }
 
+    private void launchStartGameFragment() {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final StartGameFragment askPNContentFragment = new StartGameFragment();
 
+        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 
     private void launchTextQuestionFragment() {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
         final TextQuestionFragment askPNContentFragment = new TextQuestionFragment();
+
+        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchEndGameFragment() {
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final EndGameFragment askPNContentFragment = new EndGameFragment();
 
         ft.replace(R.id.question_layout_container, askPNContentFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -99,4 +127,9 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         presenter.unsubscribeData();
     }
 
+    @Override
+    public void onAnswerSelect(Set<String> selectedAnswer) {
+        launchTextQuestionFragment();
+        Toast.makeText(this, "Answer selected=" + selectedAnswer.toString(), Toast.LENGTH_SHORT).show();
+    }
 }
