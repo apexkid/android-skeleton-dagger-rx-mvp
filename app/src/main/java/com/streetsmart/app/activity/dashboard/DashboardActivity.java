@@ -2,13 +2,12 @@ package com.streetsmart.app.activity.dashboard;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.streetsmart.app.R;
+import com.streetsmart.app.activity.BaseActivity;
 
 import javax.inject.Inject;
 
-public class DashboardActivity extends AppCompatActivity implements DashboardMVP.View {
+public class DashboardActivity extends BaseActivity implements DashboardMVP.View {
 
     @Inject
     DashboardMVP.Presenter presenter;
@@ -17,6 +16,8 @@ public class DashboardActivity extends AppCompatActivity implements DashboardMVP
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        initBottomNavigation(this, 0);
     }
 
     @Override

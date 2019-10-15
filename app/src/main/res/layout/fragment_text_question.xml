@@ -20,6 +20,7 @@
             android:layout_margin="8dp"
             android:background="#FFFFFF"
             android:gravity="center"
+            android:textColor="@color/colorPrimaryText"
             android:text="This is a big questions. Can you answer it?" />
 
         <TextView
@@ -30,6 +31,7 @@
             android:layout_margin="16dp"
             android:background="#FFFFFF"
             android:gravity="center"
+            android:textColor="@color/colorSecondaryText"
             android:text="This is option A" />
 
         <TextView
@@ -40,6 +42,7 @@
             android:layout_margin="16dp"
             android:background="#FFFFFF"
             android:gravity="center"
+            android:textColor="@color/colorSecondaryText"
             android:text="This is option B" />
 
         <TextView
@@ -50,6 +53,7 @@
             android:layout_margin="16dp"
             android:background="#FFFFFF"
             android:gravity="center"
+            android:textColor="@color/colorSecondaryText"
             android:text="This is option C" />
 
         <TextView
@@ -60,6 +64,7 @@
             android:layout_margin="16dp"
             android:background="#FFFFFF"
             android:gravity="center"
+            android:textColor="@color/colorSecondaryText"
             android:text="This is option D" />
 
 
@@ -76,7 +81,8 @@
                 android:textSize="32sp"
                 android:padding="16sp"
                 android:minHeight="30dp"
-                android:background="#FF00FF"
+                android:textColor="@color/white"
+                android:background="@color/colorAccent"
                 android:text="NEXT"/>
 
         </LinearLayout>

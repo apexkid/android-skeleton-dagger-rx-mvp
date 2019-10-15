@@ -12,7 +12,7 @@
         android:background="@color/colorPrimary">
 
         <Button
-            android:id="@+id/button_start_play"
+            android:id="@+id/button_end_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DONE"

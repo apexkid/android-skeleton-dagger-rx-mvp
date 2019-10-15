@@ -86,5 +86,7 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:${glideVersionValue}"
     implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersionValue}"
 
+    // BottomNav
+    implementation 'com.aurelhubert:ahbottomnavigation:2.3.4'
 
 }

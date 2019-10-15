@@ -5,16 +5,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
 import com.streetsmart.app.R;
 import com.streetsmart.app.activity.play.PlayFragmentFlow;
+import com.streetsmart.app.utils.IntentWrapper;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class EndGameFragment extends Fragment {
 
     private PlayFragmentFlow mFlow;
+
+
+    @BindView(R.id.button_end_play)
+    Button endPlay;
 
     public EndGameFragment() {
         // Required empty public constructor
@@ -40,6 +49,14 @@ public class EndGameFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_end_game, container, false);
+        ButterKnife.bind(this, view);
+
+        endPlay.setOnClickListener(v -> {
+            IntentWrapper.startDashboardActivity(getActivity());
+            getActivity().finish();
+        });
+
+
         return view;
     }
 
