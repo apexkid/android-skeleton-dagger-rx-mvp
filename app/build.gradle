@@ -89,4 +89,8 @@ dependencies {
     // BottomNav
     implementation 'com.aurelhubert:ahbottomnavigation:2.3.4'
 
+    // circular images
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+
 }
