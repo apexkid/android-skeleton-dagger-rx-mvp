@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -24,6 +26,12 @@ public class StartGameFragment extends Fragment {
 
     @BindView(R.id.button_cancel_play)
     Button cancelButton;
+
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+
+    @BindView(R.id.textView_preparing_game)
+    TextView preparingGameTextView;
 
     private PlayFragmentFlow mFlow;
 
@@ -68,6 +76,17 @@ public class StartGameFragment extends Fragment {
             mFlow = (PlayFragmentFlow) getActivity();
         } catch (ClassCastException e) {
             throw new ClassCastException(getActivity().toString() + " must implement PlayFragmentFlow");
+        }
+    }
+
+
+    public void showLoader(boolean status) {
+        if(status) {
+            progressBar.setVisibility(View.VISIBLE);
+            preparingGameTextView.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+            preparingGameTextView.setVisibility(View.GONE);
         }
     }
 

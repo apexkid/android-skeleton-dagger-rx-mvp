@@ -47,6 +47,9 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     private int questionsAnswered = 0;
 
+
+    private StartGameFragment startGameFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +73,8 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     @Override
     public void startGame() {
-        launchTextQuestionFragment();
+        //launchTextQuestionFragment();
+        startGameFragment.showLoader(true);
         countdown = new CountDownTimer(GAME_TIME_IN_SECONDS * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
@@ -93,9 +97,9 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     private void launchStartGameFragment() {
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final StartGameFragment askPNContentFragment = new StartGameFragment();
+        this.startGameFragment = new StartGameFragment();
 
-        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.replace(R.id.question_layout_container, startGameFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
@@ -103,36 +107,36 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     private void launchTextQuestionFragment() {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final AllTextQuestionFragment askPNContentFragment = new AllTextQuestionFragment();
+        final AllTextQuestionFragment allTextQuestionFragment = new AllTextQuestionFragment();
 
-        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.replace(R.id.question_layout_container, allTextQuestionFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
     private void launchTextQuestionImageOptionFragment() {
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final TextQuestionImageOptionFragment askPNContentFragment = new TextQuestionImageOptionFragment();
+        final TextQuestionImageOptionFragment textQuestionImageOptionFragment = new TextQuestionImageOptionFragment();
 
-        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.replace(R.id.question_layout_container, textQuestionImageOptionFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
     private void launchHybridQuestionImageOptionsFragment() {
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final HybridQuestionImageOptionFragment askPNContentFragment = new HybridQuestionImageOptionFragment();
+        final HybridQuestionImageOptionFragment hybridQuestionImageOptionFragment = new HybridQuestionImageOptionFragment();
 
-        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.replace(R.id.question_layout_container, hybridQuestionImageOptionFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
     private void launchHybridQuestionTextOptionsFragment() {
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final HybridQuestionTextOptionFragment askPNContentFragment = new HybridQuestionTextOptionFragment();
+        final HybridQuestionTextOptionFragment hybridQuestionTextOptionFragment = new HybridQuestionTextOptionFragment();
 
-        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.replace(R.id.question_layout_container, hybridQuestionTextOptionFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
@@ -186,7 +190,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         questionCountTextView.setText(questionsAnswered + " / " + GAME_QUESTIONS_COUNT);
         Toast.makeText(this, "Answer selected=" + selectedAnswer.toString(), Toast.LENGTH_SHORT).show();
 
-        if(questionsAnswered == GAME_QUESTIONS_COUNT) {
+        if (questionsAnswered == GAME_QUESTIONS_COUNT) {
             countdown.cancel();
             launchEndGameFragment();
         }
