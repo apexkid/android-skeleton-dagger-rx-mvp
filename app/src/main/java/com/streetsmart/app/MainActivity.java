@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //IntentWrapper.startDashboardActivity(this);
-        IntentWrapper.startRewardsActivity(this);
-        //IntentWrapper.startPlayActivity(this);
+        //IntentWrapper.startRewardsActivity(this);
+        IntentWrapper.startPlayActivity(this);
         //IntentWrapper.startLeaderboardActivity(this);
 
         finish();

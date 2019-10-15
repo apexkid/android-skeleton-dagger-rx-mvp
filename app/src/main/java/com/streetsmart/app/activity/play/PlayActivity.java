@@ -15,6 +15,7 @@ import com.streetsmart.app.activity.play.startgame.StartGameFragment;
 import com.streetsmart.app.activity.play.textquestion.TextQuestionFragment;
 import com.streetsmart.app.data.GameQuestionsRecord;
 import com.streetsmart.app.root.StreetsmartApp;
+import com.streetsmart.app.utils.IntentWrapper;
 
 import java.util.Set;
 
@@ -79,6 +80,12 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         };
 
         countdown.start();
+    }
+
+    @Override
+    public void cancelGame() {
+        IntentWrapper.startDashboardActivity(this);
+        finish();
     }
 
     private void launchStartGameFragment() {

@@ -22,6 +22,9 @@ public class StartGameFragment extends Fragment {
     @BindView(R.id.button_start_play)
     Button startButton;
 
+    @BindView(R.id.button_cancel_play)
+    Button cancelButton;
+
     private PlayFragmentFlow mFlow;
 
     public StartGameFragment() {
@@ -51,6 +54,7 @@ public class StartGameFragment extends Fragment {
 
         ButterKnife.bind(this, view);
         startButton.setOnClickListener(v -> mFlow.startGame());
+        cancelButton.setOnClickListener(v -> mFlow.cancelGame());
 
         return view;
     }
