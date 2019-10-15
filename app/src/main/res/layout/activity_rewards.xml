@@ -7,6 +7,85 @@
     android:layout_height="match_parent"
     tools:context=".activity.rewards.RewardsActivity">
 
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp">
+
+            <TextView
+                android:id="@+id/textView_total_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:text="2100"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <TextView
+                android:id="@+id/textView_points_remaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="48dp"
+                android:text="112"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <TextView
+                android:id="@+id/textView_total_points_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Points Earned"
+                android:textColor="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="@+id/textView_total_points"
+                app:layout_constraintStart_toStartOf="@+id/textView_total_points"
+                app:layout_constraintTop_toBottomOf="@+id/textView_total_points" />
+
+            <TextView
+                android:id="@+id/textView_points_remaining_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Points to next reward"
+                android:textColor="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="@+id/textView_points_remaining"
+                app:layout_constraintStart_toStartOf="@+id/textView_points_remaining"
+                app:layout_constraintTop_toBottomOf="@+id/textView_points_remaining" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rewards Earned"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="8dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rewards_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
     <include layout="@layout/item_bottom_navigation" />
-    
+
 </RelativeLayout>
