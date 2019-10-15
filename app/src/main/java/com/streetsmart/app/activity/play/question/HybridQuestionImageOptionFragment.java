@@ -1,10 +1,11 @@
-package com.streetsmart.app.activity.play.textquestion;
+package com.streetsmart.app.activity.play.question;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -19,31 +20,36 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class TextQuestionFragment extends Fragment {
+public class HybridQuestionImageOptionFragment extends Fragment {
 
+    private PlayFragmentFlow mFlow;
 
-    @BindView(R.id.question_option_1)
-    TextView option1;
+    @BindView(R.id.imageView_option_1)
+    ImageView option1;
 
-    @BindView(R.id.question_option_2)
-    TextView option2;
+    @BindView(R.id.imageView_option_2)
+    ImageView option2;
 
-    @BindView(R.id.question_option_3)
-    TextView option3;
+    @BindView(R.id.imageView_option_3)
+    ImageView option3;
 
-    @BindView(R.id.question_option_4)
-    TextView option4;
+    @BindView(R.id.imageView_option_4)
+    ImageView option4;
+
+    @BindView(R.id.imageView_question)
+    ImageView questionImage;
 
     @BindView(R.id.next_button)
     TextView nextTextView;
 
-    private PlayFragmentFlow mFlow;
     private Set<String> selectedAns = new HashSet<>();
 
-    public TextQuestionFragment() {}
+    public HybridQuestionImageOptionFragment() {
+        // Required empty public constructor
+    }
 
-    public static TextQuestionFragment newInstance(String param1, String param2) {
-        TextQuestionFragment fragment = new TextQuestionFragment();
+    public static TextQuestionImageOptionFragment newInstance(String param1, String param2) {
+        TextQuestionImageOptionFragment fragment = new TextQuestionImageOptionFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -52,44 +58,27 @@ public class TextQuestionFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_text_question, container, false);
+        View view = inflater.inflate(R.layout.fragment_hybrid_question_image_options, container, false);
 
         ButterKnife.bind(this, view);
-
-        setListener(option1);
-        setListener(option2);
-        setListener(option3);
-        setListener(option4);
 
         nextTextView.setOnClickListener(v -> mFlow.onAnswerSelect(selectedAns));
 
         return view;
     }
 
-    private void setListener(final TextView textView) {
-        textView.setOnClickListener(v -> {
-            String ans = ((TextView) v).getText().toString();
-            if(selectedAns.contains(ans)) {
-                selectedAns.remove(ans);
-                textView.setBackgroundColor(getResources().getColor(R.color.white));
-            } else {
-                selectedAns.add(ans);
-                textView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-            }
-        });
-    }
-
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         try {
             mFlow = (PlayFragmentFlow) getActivity();
         } catch (ClassCastException e) {
@@ -101,5 +90,4 @@ public class TextQuestionFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
-
 }

@@ -11,8 +11,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.streetsmart.app.R;
 import com.streetsmart.app.activity.play.endgame.EndGameFragment;
+import com.streetsmart.app.activity.play.question.AllTextQuestionFragment;
+import com.streetsmart.app.activity.play.question.HybridQuestionImageOptionFragment;
+import com.streetsmart.app.activity.play.question.HybridQuestionTextOptionFragment;
+import com.streetsmart.app.activity.play.question.TextQuestionImageOptionFragment;
 import com.streetsmart.app.activity.play.startgame.StartGameFragment;
-import com.streetsmart.app.activity.play.textquestion.TextQuestionFragment;
 import com.streetsmart.app.data.GameQuestionsRecord;
 import com.streetsmart.app.root.StreetsmartApp;
 import com.streetsmart.app.utils.IntentWrapper;
@@ -100,7 +103,34 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     private void launchTextQuestionFragment() {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final TextQuestionFragment askPNContentFragment = new TextQuestionFragment();
+        final AllTextQuestionFragment askPNContentFragment = new AllTextQuestionFragment();
+
+        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchTextQuestionImageOptionFragment() {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final TextQuestionImageOptionFragment askPNContentFragment = new TextQuestionImageOptionFragment();
+
+        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchHybridQuestionImageOptionsFragment() {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final HybridQuestionImageOptionFragment askPNContentFragment = new HybridQuestionImageOptionFragment();
+
+        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchHybridQuestionTextOptionsFragment() {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final HybridQuestionTextOptionFragment askPNContentFragment = new HybridQuestionTextOptionFragment();
 
         ft.replace(R.id.question_layout_container, askPNContentFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -148,7 +178,10 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     @Override
     public void onAnswerSelect(Set<String> selectedAnswer) {
-        launchTextQuestionFragment();
+        //launchTextQuestionFragment();
+        //launchTextQuestionImageOptionFragment();
+        //launchHybridQuestionImageOptionsFragment();
+        launchHybridQuestionTextOptionsFragment();
         questionsAnswered++;
         questionCountTextView.setText(questionsAnswered + " / " + GAME_QUESTIONS_COUNT);
         Toast.makeText(this, "Answer selected=" + selectedAnswer.toString(), Toast.LENGTH_SHORT).show();
