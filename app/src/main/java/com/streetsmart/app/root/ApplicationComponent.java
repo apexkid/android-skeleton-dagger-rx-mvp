@@ -1,5 +1,6 @@
 package com.streetsmart.app.root;
 
+import com.streetsmart.app.activity.api.APIModule;
 import com.streetsmart.app.activity.dashboard.DashboardActivity;
 import com.streetsmart.app.activity.dashboard.DashboardModule;
 import com.streetsmart.app.activity.play.PlayActivity;
@@ -13,7 +14,8 @@ import dagger.Component;
 @Component(modules = {
         ApplicationModule.class,
         DashboardModule.class,
-        PlayModule.class
+        PlayModule.class,
+        APIModule.class
 })
 public interface ApplicationComponent {
 
