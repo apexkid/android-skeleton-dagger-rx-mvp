@@ -11,8 +11,11 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.streetsmart.app.R;
+import com.streetsmart.app.activity.play.PlayConstants;
 import com.streetsmart.app.activity.play.PlayFragmentFlow;
 import com.streetsmart.app.data.AnswerRecord;
+import com.streetsmart.app.data.api.QuestionForUser;
+import com.streetsmart.app.modules.GlideApp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,23 +25,33 @@ public class HybridQuestionImageOptionFragment extends Fragment {
 
     private PlayFragmentFlow mFlow;
 
-    @BindView(R.id.imageView_option_1)
-    ImageView option1;
-
-    @BindView(R.id.imageView_option_2)
-    ImageView option2;
-
-    @BindView(R.id.imageView_option_3)
-    ImageView option3;
-
-    @BindView(R.id.imageView_option_4)
-    ImageView option4;
+    @BindView(R.id.question_title)
+    TextView questionTextView;
 
     @BindView(R.id.imageView_question)
-    ImageView questionImage;
+    ImageView questionImageImageView;
+
+    @BindView(R.id.imageView_option_1)
+    ImageView imageViewOption1;
+
+    @BindView(R.id.imageView_option_2)
+    ImageView imageViewOption2;
+
+    @BindView(R.id.imageView_option_3)
+    ImageView imageViewOption3;
+
+    @BindView(R.id.imageView_option_4)
+    ImageView imageViewOption4;
 
     @BindView(R.id.next_button)
     TextView nextTextView;
+
+    private String questionText;
+    private String questionImageUrl;
+    private String option1;
+    private String option2;
+    private String option3;
+    private String option4;
 
     private AnswerRecord answerRecord = new AnswerRecord();
 
@@ -46,9 +59,15 @@ public class HybridQuestionImageOptionFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static TextQuestionImageOptionFragment newInstance(String param1, String param2) {
-        TextQuestionImageOptionFragment fragment = new TextQuestionImageOptionFragment();
-        Bundle args = new Bundle();
+    public static HybridQuestionImageOptionFragment newInstance(QuestionForUser question) {
+        final HybridQuestionImageOptionFragment fragment = new HybridQuestionImageOptionFragment();
+        final Bundle args = new Bundle();
+        args.putString(PlayConstants.QUESTION_TEXT, question.getQuestionText());
+        args.putString(PlayConstants.QUESTION_IMAGE, question.getQuestionImageUrl());
+        args.putString(PlayConstants.OPTION1, question.getOptionList().get(0).getOptionImageUrl());
+        args.putString(PlayConstants.OPTION2, question.getOptionList().get(1).getOptionImageUrl());
+        args.putString(PlayConstants.OPTION3, question.getOptionList().get(2).getOptionImageUrl());
+        args.putString(PlayConstants.OPTION4, question.getOptionList().get(3).getOptionImageUrl());
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,7 +76,12 @@ public class HybridQuestionImageOptionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
+            questionText = getArguments().getString(PlayConstants.QUESTION_TEXT);
+            questionImageUrl = getArguments().getString(PlayConstants.QUESTION_IMAGE);
+            option1 = getArguments().getString(PlayConstants.OPTION1);
+            option2 = getArguments().getString(PlayConstants.OPTION2);
+            option3 = getArguments().getString(PlayConstants.OPTION3);
+            option4 = getArguments().getString(PlayConstants.OPTION4);
         }
     }
 
@@ -71,7 +95,48 @@ public class HybridQuestionImageOptionFragment extends Fragment {
 
         nextTextView.setOnClickListener(v -> mFlow.onAnswerSelect(answerRecord));
 
+        questionTextView.setText(questionText);
+
+        GlideApp.with(getActivity())
+                .load(option1)
+                .into(imageViewOption1);
+
+        GlideApp.with(getActivity())
+                .load(option2)
+                .into(imageViewOption2);
+
+        GlideApp.with(getActivity())
+                .load(option3)
+                .into(imageViewOption3);
+
+        GlideApp.with(getActivity())
+                .load(option4)
+                .into(imageViewOption4);
+
+        GlideApp.with(getActivity())
+                .load(questionImageUrl)
+                .into(questionImageImageView);
+
+        setListener(imageViewOption1, option1);
+        setListener(imageViewOption2, option2);
+        setListener(imageViewOption3, option3);
+        setListener(imageViewOption4, option4);
+
         return view;
+    }
+
+    private void setListener(ImageView imageViewOption, String url) {
+        imageViewOption.setTag(R.string.image_tag, url);
+        imageViewOption.setOnClickListener(v -> {
+            String ans = (String) v.getTag(R.string.image_tag);
+            if(answerRecord.contains(ans)) {
+                answerRecord.removeAnswer(ans);
+                imageViewOption.setAlpha(255);
+            } else {
+                answerRecord.addAnswer(ans);
+                imageViewOption.setAlpha(100);
+            }
+        });
     }
 
     @Override

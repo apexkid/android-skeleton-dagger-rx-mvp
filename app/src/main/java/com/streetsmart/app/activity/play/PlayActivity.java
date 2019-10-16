@@ -134,13 +134,13 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
                 launchTextQuestionFragment(question);
                 break;
             case TI:
-                launchTextQuestionImageOptionFragment();
+                launchTextQuestionImageOptionFragment(question);
                 break;
             case HT:
-                launchHybridQuestionTextOptionsFragment();
+                launchHybridQuestionTextOptionsFragment(question);
                 break;
             case HI:
-                launchHybridQuestionImageOptionsFragment();
+                launchHybridQuestionImageOptionsFragment(question);
                 break;
         }
     }
@@ -201,27 +201,27 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         ft.commit();
     }
 
-    private void launchTextQuestionImageOptionFragment() {
+    private void launchTextQuestionImageOptionFragment(QuestionForUser question) {
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final TextQuestionImageOptionFragment textQuestionImageOptionFragment = new TextQuestionImageOptionFragment();
+        final TextQuestionImageOptionFragment textQuestionImageOptionFragment = TextQuestionImageOptionFragment.newInstance(question);
 
         ft.replace(R.id.question_layout_container, textQuestionImageOptionFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
-    private void launchHybridQuestionImageOptionsFragment() {
+    private void launchHybridQuestionImageOptionsFragment(QuestionForUser question) {
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final HybridQuestionImageOptionFragment hybridQuestionImageOptionFragment = new HybridQuestionImageOptionFragment();
+        final HybridQuestionImageOptionFragment hybridQuestionImageOptionFragment = HybridQuestionImageOptionFragment.newInstance(question);
 
         ft.replace(R.id.question_layout_container, hybridQuestionImageOptionFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
 
-    private void launchHybridQuestionTextOptionsFragment() {
+    private void launchHybridQuestionTextOptionsFragment(QuestionForUser question) {
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final HybridQuestionTextOptionFragment hybridQuestionTextOptionFragment = new HybridQuestionTextOptionFragment();
+        final HybridQuestionTextOptionFragment hybridQuestionTextOptionFragment = HybridQuestionTextOptionFragment.newInstance(question);
 
         ft.replace(R.id.question_layout_container, hybridQuestionTextOptionFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
