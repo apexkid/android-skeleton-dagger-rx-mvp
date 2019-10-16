@@ -5,8 +5,10 @@ import java.util.Set;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @NoArgsConstructor
+@ToString
 public class AnswerRecord {
 
     @Getter

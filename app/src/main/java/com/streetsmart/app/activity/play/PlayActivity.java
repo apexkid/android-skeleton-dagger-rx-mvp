@@ -46,14 +46,15 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     private CountDownTimer countdown;
 
     private static final int GAME_TIME_IN_SECONDS = 30;
-    private static final int GAME_QUESTIONS_COUNT = 10;
+    private static int GAME_QUESTIONS_COUNT = 10;
 
     private int questionsAnswered = 0;
+    private long timeRemainingInSeconds;
 
 
     private StartGameFragment startGameFragment;
 
-    private List<QuestionForUser> questions = new ArrayList<>();
+    private List<QuestionForUser> questionList = new ArrayList<>();
     private List<AnswerRecord> answerList = new ArrayList<>();
 
     @Override
@@ -90,7 +91,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     @Override
     public void clearData() {
-        questions.clear();
+        questionList.clear();
     }
 
     @Override
@@ -105,16 +106,18 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     @Override
     public void updateQuestionData(QuestionForUser record) {
         if(record != null) {
-            questions.add(record);
+            questionList.add(record);
+            GAME_QUESTIONS_COUNT = questionList.size();
         }
     }
 
     @Override
     public void launchGame() {
-        launchFragmentForQuestion(questions.get(questionsAnswered));
+        launchFragmentForQuestion(questionList.get(questionsAnswered));
         countdown = new CountDownTimer(GAME_TIME_IN_SECONDS * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
+                timeRemainingInSeconds =  millisUntilFinished / 1000;
             }
 
             public void onFinish() {
@@ -154,14 +157,13 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         super.onStop();
         presenter.detachView();
         presenter.unsubscribeData();
-        questions.clear();
+        questionList.clear();
         questionsAnswered = 0;
     }
 
     @Override
     public void onAnswerSelect(AnswerRecord answer) {
         answerList.add(answer);
-        launchHybridQuestionTextOptionsFragment();
         questionsAnswered++;
         questionCountTextView.setText(questionsAnswered + " / " + GAME_QUESTIONS_COUNT);
         Toast.makeText(this, "Answer selected=" + answer.getAnswers().toString(), Toast.LENGTH_SHORT).show();
@@ -169,7 +171,15 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         if (questionsAnswered == GAME_QUESTIONS_COUNT) {
             countdown.cancel();
             launchEndGameFragment();
+            return;
         }
+
+        launchFragmentForQuestion(questionList.get(questionsAnswered));
+    }
+
+    @Override
+    public int getScoreForGameSessions() {
+        return PlayUtils.getScore(questionList, answerList, (int) timeRemainingInSeconds);
     }
 
     private void launchStartGameFragment() {
@@ -221,9 +231,9 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     private void launchEndGameFragment() {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final EndGameFragment askPNContentFragment = new EndGameFragment();
+        final EndGameFragment endGameFragment = new EndGameFragment();
 
-        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.replace(R.id.question_layout_container, endGameFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }

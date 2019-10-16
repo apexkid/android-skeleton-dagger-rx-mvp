@@ -6,4 +6,5 @@ public interface PlayFragmentFlow {
     void startGame();
     void cancelGame();
     void onAnswerSelect(AnswerRecord answer);
+    int getScoreForGameSessions();
 }

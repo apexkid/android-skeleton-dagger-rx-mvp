@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -24,6 +26,12 @@ public class EndGameFragment extends Fragment {
 
     @BindView(R.id.button_end_play)
     Button endPlay;
+
+    @BindView(R.id.progressBar_end_game)
+    ProgressBar progressBar;
+
+    @BindView(R.id.textView_score_status)
+    TextView endGameStatusTextView;
 
     public EndGameFragment() {
         // Required empty public constructor
@@ -51,13 +59,22 @@ public class EndGameFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_end_game, container, false);
         ButterKnife.bind(this, view);
 
+
         endPlay.setOnClickListener(v -> {
             IntentWrapper.startDashboardActivity(getActivity());
             getActivity().finish();
         });
 
+        fetchScore();
 
         return view;
+    }
+
+    private void fetchScore() {
+        progressBar.setVisibility(View.VISIBLE);
+        int score = mFlow.getScoreForGameSessions();
+        endGameStatusTextView.setText("Your score: " + score);
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override

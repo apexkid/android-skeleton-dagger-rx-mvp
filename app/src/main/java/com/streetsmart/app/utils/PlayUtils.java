@@ -1,5 +1,7 @@
 package com.streetsmart.app.utils;
 
+import android.util.Log;
+
 import com.streetsmart.app.data.AnswerRecord;
 import com.streetsmart.app.data.QuestionViewType;
 import com.streetsmart.app.data.api.QuestionForUser;
@@ -12,12 +14,22 @@ import java.util.Set;
 
 public class PlayUtils {
 
+    private static final String TAG = "PlayUtils";
+
     private static final int SCORE_FACTOR = 20;
     private static final int TIME_FACTOR = 5;
 
-    public int getScore(List<QuestionForUser> questions, List<AnswerRecord> answers, int timeRemainingInSeconds) {
+    public static int  getScore(List<QuestionForUser> questions, List<AnswerRecord> answers, int timeRemainingInSeconds) {
+        Log.v(TAG, "Questions=" + questions);
+        Log.v(TAG, "Answers=" + answers);
+        Log.v(TAG, "TimeRemaining=" + timeRemainingInSeconds);
+
+        Log.v(TAG, "QuestionSize=" + questions.size());
+        Log.v(TAG, "AnswersSize=" + answers.size());
         int numberOfCorrectAnswers = 0;
         for(int i = 0; i < questions.size(); i++) {
+            Log.v(TAG, "I=" + i);
+
             QuestionForUser ques = questions.get(i);
             AnswerRecord ans = answers.get(i);
 
@@ -25,11 +37,14 @@ public class PlayUtils {
                 numberOfCorrectAnswers++;
             }
         }
-
-        return (numberOfCorrectAnswers * SCORE_FACTOR) + (timeRemainingInSeconds * TIME_FACTOR);
+        if(numberOfCorrectAnswers > 0) {
+            return (numberOfCorrectAnswers * SCORE_FACTOR) + (timeRemainingInSeconds * TIME_FACTOR);
+        } else {
+            return 0;
+        }
     }
 
-    private boolean isCorrectAnswer(QuestionForUser ques, AnswerRecord ans) {
+    private static boolean isCorrectAnswer(QuestionForUser ques, AnswerRecord ans) {
         Set<String> correctAnswersForQuestion = new HashSet<>();
         for(QuestionForUser.Options option : ques.getOptionList()) {
             if(option.getIsAcceptedAnswer() == true) {
