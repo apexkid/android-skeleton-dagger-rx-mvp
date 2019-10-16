@@ -81,62 +81,6 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         finish();
     }
 
-    private void launchStartGameFragment() {
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        this.startGameFragment = new StartGameFragment();
-
-        ft.replace(R.id.question_layout_container, startGameFragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-    }
-
-    private void launchTextQuestionFragment() {
-
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        final AllTextQuestionFragment allTextQuestionFragment = new AllTextQuestionFragment();
-
-        ft.replace(R.id.question_layout_container, allTextQuestionFragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-    }
-
-    private void launchTextQuestionImageOptionFragment() {
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        final TextQuestionImageOptionFragment textQuestionImageOptionFragment = new TextQuestionImageOptionFragment();
-
-        ft.replace(R.id.question_layout_container, textQuestionImageOptionFragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-    }
-
-    private void launchHybridQuestionImageOptionsFragment() {
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        final HybridQuestionImageOptionFragment hybridQuestionImageOptionFragment = new HybridQuestionImageOptionFragment();
-
-        ft.replace(R.id.question_layout_container, hybridQuestionImageOptionFragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-    }
-
-    private void launchHybridQuestionTextOptionsFragment() {
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        final HybridQuestionTextOptionFragment hybridQuestionTextOptionFragment = new HybridQuestionTextOptionFragment();
-
-        ft.replace(R.id.question_layout_container, hybridQuestionTextOptionFragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-    }
-
-    private void launchEndGameFragment() {
-
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        final EndGameFragment askPNContentFragment = new EndGameFragment();
-
-        ft.replace(R.id.question_layout_container, askPNContentFragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-    }
-
     @Override
     public void showRefreshLoader(boolean loadingStatus) {
 
@@ -208,5 +152,61 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
             countdown.cancel();
             launchEndGameFragment();
         }
+    }
+
+    private void launchStartGameFragment() {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        this.startGameFragment = new StartGameFragment();
+
+        ft.replace(R.id.question_layout_container, startGameFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchTextQuestionFragment() {
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final AllTextQuestionFragment allTextQuestionFragment = new AllTextQuestionFragment();
+
+        ft.replace(R.id.question_layout_container, allTextQuestionFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchTextQuestionImageOptionFragment() {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final TextQuestionImageOptionFragment textQuestionImageOptionFragment = new TextQuestionImageOptionFragment();
+
+        ft.replace(R.id.question_layout_container, textQuestionImageOptionFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchHybridQuestionImageOptionsFragment() {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final HybridQuestionImageOptionFragment hybridQuestionImageOptionFragment = new HybridQuestionImageOptionFragment();
+
+        ft.replace(R.id.question_layout_container, hybridQuestionImageOptionFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchHybridQuestionTextOptionsFragment() {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final HybridQuestionTextOptionFragment hybridQuestionTextOptionFragment = new HybridQuestionTextOptionFragment();
+
+        ft.replace(R.id.question_layout_container, hybridQuestionTextOptionFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchEndGameFragment() {
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        final EndGameFragment askPNContentFragment = new EndGameFragment();
+
+        ft.replace(R.id.question_layout_container, askPNContentFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 }

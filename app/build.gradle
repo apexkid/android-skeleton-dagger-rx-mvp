@@ -92,5 +92,7 @@ dependencies {
     // circular images
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
-
+    // utilities
+    implementation 'org.apache.commons:commons-lang3:3.6'
+    implementation 'org.apache.commons:commons-collections4:4.1'
 }
