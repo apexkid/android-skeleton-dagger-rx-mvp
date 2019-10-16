@@ -40,28 +40,6 @@ public class PlayPresenter implements PlayMVP.Presenter {
     public void subscribeData() {
         Log.v(TAG, "Starting to subscribe data");
         view.showRefreshLoader(true);
-        disposable = getQuestionForUser("rahulvallu@gmail.com")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableObserver<QuestionForUser>() {
-                    @Override
-                    public void onNext(QuestionForUser record) {
-                        Log.v(TAG, "Got data for questionForUser=" + record);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e(TAG, "Error in getQuestionForuser", e);
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
-
     }
 
     @Override
@@ -69,6 +47,39 @@ public class PlayPresenter implements PlayMVP.Presenter {
         if(disposable != null) {
             disposable.dispose();
         }
+    }
+
+    @Override
+    public void onStartGame() {
+        if(view != null) {
+
+            view.showPrepareGameState(true);
+            view.clearData();
+            disposable = getQuestionForUser("rahulvallu@gmail.com")
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableObserver<QuestionForUser>() {
+                        @Override
+                        public void onNext(QuestionForUser record) {
+                            Log.v(TAG, "Got data for questionForUser=" + record);
+                            view.updateQuestionData(record);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            view.showPrepareGameState(false);
+                            Log.e(TAG, "Error in getQuestionForuser", e);
+                            e.printStackTrace();
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            view.showPrepareGameState(false);
+                            view.launchGame();
+                        }
+                    });
+        }
+
     }
 
     private Observable<QuestionForUser> getQuestionForUser(String userId) {

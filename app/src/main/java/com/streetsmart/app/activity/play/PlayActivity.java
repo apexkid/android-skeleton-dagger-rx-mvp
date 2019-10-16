@@ -16,10 +16,12 @@ import com.streetsmart.app.activity.play.question.HybridQuestionImageOptionFragm
 import com.streetsmart.app.activity.play.question.HybridQuestionTextOptionFragment;
 import com.streetsmart.app.activity.play.question.TextQuestionImageOptionFragment;
 import com.streetsmart.app.activity.play.startgame.StartGameFragment;
-import com.streetsmart.app.data.GameQuestionsRecord;
+import com.streetsmart.app.data.api.QuestionForUser;
 import com.streetsmart.app.root.StreetsmartApp;
 import com.streetsmart.app.utils.IntentWrapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -50,6 +52,8 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     private StartGameFragment startGameFragment;
 
+    private List<QuestionForUser> questions = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,26 +71,8 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     }
 
     @Override
-    public void updateData(GameQuestionsRecord record) {
-        launchStartGameFragment();
-    }
-
-    @Override
     public void startGame() {
-        //launchTextQuestionFragment();
-        startGameFragment.showLoader(true);
-        countdown = new CountDownTimer(GAME_TIME_IN_SECONDS * 1000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-                timerTextView.setText("Time Up!");
-                launchEndGameFragment();
-            }
-        };
-
-        countdown.start();
+        presenter.onStartGame();
     }
 
     @Override
@@ -158,19 +144,46 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     @Override
     public void clearData() {
-
+        questions.clear();
     }
 
     @Override
-    public void showSnackbar(String msg) {
+    public void showPrepareGameState(boolean status) {
+        if(status) {
+            startGameFragment.showLoader(true);
+        } else {
+            startGameFragment.showLoader(false);
+        }
+    }
 
+    @Override
+    public void updateQuestionData(QuestionForUser record) {
+        if(record != null) {
+            questions.add(record);
+        }
+    }
+
+    @Override
+    public void launchGame() {
+        launchTextQuestionFragment();
+        countdown = new CountDownTimer(GAME_TIME_IN_SECONDS * 1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                timerTextView.setText("Time Up!");
+                launchEndGameFragment();
+            }
+        };
+        countdown.start();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         presenter.attachView(this);
-        presenter.subscribeData();
+        launchStartGameFragment();
     }
 
     @Override
@@ -178,6 +191,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         super.onStop();
         presenter.detachView();
         presenter.unsubscribeData();
+        questions.clear();
     }
 
     @Override

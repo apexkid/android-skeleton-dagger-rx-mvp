@@ -39,19 +39,9 @@ public class StartGameFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-    // TODO: Rename and change types and number of parameters
-    public static StartGameFragment newInstance(String param1, String param2) {
-        StartGameFragment fragment = new StartGameFragment();
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
     }
 
     @Override

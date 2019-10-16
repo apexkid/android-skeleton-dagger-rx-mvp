@@ -1,14 +1,15 @@
 package com.streetsmart.app.activity.play;
 
-import com.streetsmart.app.data.GameQuestionsRecord;
+import com.streetsmart.app.data.api.QuestionForUser;
 
 public interface PlayMVP {
 
     interface View {
-        void updateData(GameQuestionsRecord record);
         void showRefreshLoader(boolean loadingStatus);
         void clearData();
-        void showSnackbar(String msg);
+        void showPrepareGameState(boolean status);
+        void updateQuestionData(QuestionForUser record);
+        void launchGame();
     }
 
     interface Presenter  {
@@ -16,5 +17,6 @@ public interface PlayMVP {
         void detachView();
         void subscribeData();
         void unsubscribeData();
+        void onStartGame();
     }
 }
