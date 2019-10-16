@@ -27,7 +27,7 @@ public class PlayUtils {
         Log.v(TAG, "QuestionSize=" + questions.size());
         Log.v(TAG, "AnswersSize=" + answers.size());
         int numberOfCorrectAnswers = 0;
-        for(int i = 0; i < questions.size(); i++) {
+        for(int i = 0; i < answers.size(); i++) {
             Log.v(TAG, "I=" + i);
 
             QuestionForUser ques = questions.get(i);
