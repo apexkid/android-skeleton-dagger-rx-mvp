@@ -19,6 +19,7 @@ import com.streetsmart.app.activity.play.startgame.StartGameFragment;
 import com.streetsmart.app.data.api.QuestionForUser;
 import com.streetsmart.app.root.StreetsmartApp;
 import com.streetsmart.app.utils.IntentWrapper;
+import com.streetsmart.app.utils.QuestionViewTypeDecider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,7 +110,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     @Override
     public void launchGame() {
-        launchTextQuestionFragment();
+        launchFragmentForQuestion(questions.get(questionsAnswered));
         countdown = new CountDownTimer(GAME_TIME_IN_SECONDS * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
@@ -121,6 +122,23 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
             }
         };
         countdown.start();
+    }
+
+    private void launchFragmentForQuestion(QuestionForUser question) {
+        switch(QuestionViewTypeDecider.getQuestionViewType(question)) {
+            case TT:
+                launchTextQuestionFragment();
+                break;
+            case TI:
+                launchTextQuestionImageOptionFragment();
+                break;
+            case HT:
+                launchHybridQuestionTextOptionsFragment();
+                break;
+            case HI:
+                launchHybridQuestionImageOptionsFragment();
+                break;
+        }
     }
 
     @Override
@@ -136,6 +154,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         presenter.detachView();
         presenter.unsubscribeData();
         questions.clear();
+        questionsAnswered = 0;
     }
 
     @Override

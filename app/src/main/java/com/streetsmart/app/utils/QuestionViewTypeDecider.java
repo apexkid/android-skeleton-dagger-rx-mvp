@@ -5,7 +5,7 @@ import com.streetsmart.app.data.api.QuestionForUser;
 import org.apache.commons.lang3.StringUtils;
 
 public class QuestionViewTypeDecider {
-    
+
     public static QuestionViewType getQuestionViewType(QuestionForUser question) {
         if(question == null) {
             throw new RuntimeException("Null question passed to getQuestionViewType");
