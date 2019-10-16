@@ -1,9 +1,9 @@
 package com.streetsmart.app.activity.play;
 
-import java.util.Set;
+import com.streetsmart.app.data.AnswerRecord;
 
 public interface PlayFragmentFlow {
-    void onAnswerSelect(Set<String> selectedAnswer);
     void startGame();
     void cancelGame();
+    void onAnswerSelect(AnswerRecord answer);
 }

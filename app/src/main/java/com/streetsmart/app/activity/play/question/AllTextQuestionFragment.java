@@ -10,10 +10,10 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.streetsmart.app.R;
+import com.streetsmart.app.activity.play.PlayConstants;
 import com.streetsmart.app.activity.play.PlayFragmentFlow;
-
-import java.util.HashSet;
-import java.util.Set;
+import com.streetsmart.app.data.AnswerRecord;
+import com.streetsmart.app.data.api.QuestionForUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,29 +22,43 @@ import butterknife.ButterKnife;
 public class AllTextQuestionFragment extends Fragment {
 
 
+    @BindView(R.id.question_title)
+    TextView questionTextView;
+
     @BindView(R.id.question_option_1)
-    TextView option1;
+    TextView optionTextView1;
 
     @BindView(R.id.question_option_2)
-    TextView option2;
+    TextView optionTextView2;
 
     @BindView(R.id.question_option_3)
-    TextView option3;
+    TextView optionTextView3;
 
     @BindView(R.id.question_option_4)
-    TextView option4;
+    TextView optionTextView4;
 
     @BindView(R.id.next_button)
     TextView nextTextView;
 
     private PlayFragmentFlow mFlow;
-    private Set<String> selectedAns = new HashSet<>();
+    private AnswerRecord answerRecord = new AnswerRecord();
+
+    private String questionText;
+    private String option1;
+    private String option2;
+    private String option3;
+    private String option4;
 
     public AllTextQuestionFragment() {}
 
-    public static AllTextQuestionFragment newInstance(String param1, String param2) {
+    public static AllTextQuestionFragment newInstance(QuestionForUser question) {
         AllTextQuestionFragment fragment = new AllTextQuestionFragment();
-        Bundle args = new Bundle();
+        final Bundle args = new Bundle();
+        args.putString(PlayConstants.QUESTION_TEXT, question.getQuestionText());
+        args.putString(PlayConstants.OPTION1, question.getOptionList().get(0).getOptionText());
+        args.putString(PlayConstants.OPTION2, question.getOptionList().get(1).getOptionText());
+        args.putString(PlayConstants.OPTION3, question.getOptionList().get(2).getOptionText());
+        args.putString(PlayConstants.OPTION4, question.getOptionList().get(3).getOptionText());
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,6 +66,13 @@ public class AllTextQuestionFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            questionText = getArguments().getString(PlayConstants.QUESTION_TEXT);
+            option1 = getArguments().getString(PlayConstants.OPTION1);
+            option2 = getArguments().getString(PlayConstants.OPTION2);
+            option3 = getArguments().getString(PlayConstants.OPTION3);
+            option4 = getArguments().getString(PlayConstants.OPTION4);
+        }
     }
 
     @Override
@@ -62,12 +83,18 @@ public class AllTextQuestionFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        setListener(option1);
-        setListener(option2);
-        setListener(option3);
-        setListener(option4);
+        questionTextView.setText(questionText);
+        optionTextView1.setText(option1);
+        optionTextView2.setText(option2);
+        optionTextView3.setText(option3);
+        optionTextView4.setText(option4);
 
-        nextTextView.setOnClickListener(v -> mFlow.onAnswerSelect(selectedAns));
+        setListener(optionTextView1);
+        setListener(optionTextView2);
+        setListener(optionTextView3);
+        setListener(optionTextView4);
+
+        nextTextView.setOnClickListener(v -> mFlow.onAnswerSelect(answerRecord));
 
         return view;
     }
@@ -75,11 +102,11 @@ public class AllTextQuestionFragment extends Fragment {
     private void setListener(final TextView textView) {
         textView.setOnClickListener(v -> {
             String ans = ((TextView) v).getText().toString();
-            if(selectedAns.contains(ans)) {
-                selectedAns.remove(ans);
+            if(answerRecord.contains(ans)) {
+                answerRecord.removeAnswer(ans);
                 textView.setBackgroundColor(getResources().getColor(R.color.white));
             } else {
-                selectedAns.add(ans);
+                answerRecord.addAnswer(ans);
                 textView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             }
         });

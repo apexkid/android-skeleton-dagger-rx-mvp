@@ -16,14 +16,14 @@ import com.streetsmart.app.activity.play.question.HybridQuestionImageOptionFragm
 import com.streetsmart.app.activity.play.question.HybridQuestionTextOptionFragment;
 import com.streetsmart.app.activity.play.question.TextQuestionImageOptionFragment;
 import com.streetsmart.app.activity.play.startgame.StartGameFragment;
+import com.streetsmart.app.data.AnswerRecord;
 import com.streetsmart.app.data.api.QuestionForUser;
 import com.streetsmart.app.root.StreetsmartApp;
 import com.streetsmart.app.utils.IntentWrapper;
-import com.streetsmart.app.utils.QuestionViewTypeDecider;
+import com.streetsmart.app.utils.PlayUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -54,6 +54,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     private StartGameFragment startGameFragment;
 
     private List<QuestionForUser> questions = new ArrayList<>();
+    private List<AnswerRecord> answerList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,9 +126,9 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     }
 
     private void launchFragmentForQuestion(QuestionForUser question) {
-        switch(QuestionViewTypeDecider.getQuestionViewType(question)) {
+        switch(PlayUtils.getQuestionViewType(question)) {
             case TT:
-                launchTextQuestionFragment();
+                launchTextQuestionFragment(question);
                 break;
             case TI:
                 launchTextQuestionImageOptionFragment();
@@ -158,14 +159,12 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     }
 
     @Override
-    public void onAnswerSelect(Set<String> selectedAnswer) {
-        //launchTextQuestionFragment();
-        //launchTextQuestionImageOptionFragment();
-        //launchHybridQuestionImageOptionsFragment();
+    public void onAnswerSelect(AnswerRecord answer) {
+        answerList.add(answer);
         launchHybridQuestionTextOptionsFragment();
         questionsAnswered++;
         questionCountTextView.setText(questionsAnswered + " / " + GAME_QUESTIONS_COUNT);
-        Toast.makeText(this, "Answer selected=" + selectedAnswer.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Answer selected=" + answer.getAnswers().toString(), Toast.LENGTH_SHORT).show();
 
         if (questionsAnswered == GAME_QUESTIONS_COUNT) {
             countdown.cancel();
@@ -182,10 +181,10 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         ft.commit();
     }
 
-    private void launchTextQuestionFragment() {
+    private void launchTextQuestionFragment(QuestionForUser question) {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final AllTextQuestionFragment allTextQuestionFragment = new AllTextQuestionFragment();
+        final AllTextQuestionFragment allTextQuestionFragment = AllTextQuestionFragment.newInstance(question);
 
         ft.replace(R.id.question_layout_container, allTextQuestionFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

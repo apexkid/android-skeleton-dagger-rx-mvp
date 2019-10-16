@@ -12,9 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.streetsmart.app.R;
 import com.streetsmart.app.activity.play.PlayFragmentFlow;
-
-import java.util.HashSet;
-import java.util.Set;
+import com.streetsmart.app.data.AnswerRecord;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +40,7 @@ public class HybridQuestionImageOptionFragment extends Fragment {
     @BindView(R.id.next_button)
     TextView nextTextView;
 
-    private Set<String> selectedAns = new HashSet<>();
+    private AnswerRecord answerRecord = new AnswerRecord();
 
     public HybridQuestionImageOptionFragment() {
         // Required empty public constructor
@@ -71,7 +69,7 @@ public class HybridQuestionImageOptionFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        nextTextView.setOnClickListener(v -> mFlow.onAnswerSelect(selectedAns));
+        nextTextView.setOnClickListener(v -> mFlow.onAnswerSelect(answerRecord));
 
         return view;
     }

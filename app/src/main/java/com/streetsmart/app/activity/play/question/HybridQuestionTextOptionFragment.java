@@ -12,9 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.streetsmart.app.R;
 import com.streetsmart.app.activity.play.PlayFragmentFlow;
-
-import java.util.HashSet;
-import java.util.Set;
+import com.streetsmart.app.data.AnswerRecord;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,8 +39,9 @@ public class HybridQuestionTextOptionFragment extends Fragment {
     @BindView(R.id.next_button)
     TextView nextTextView;
 
+    private AnswerRecord answerRecord = new AnswerRecord();
+
     private PlayFragmentFlow mFlow;
-    private Set<String> selectedAns = new HashSet<>();
 
     public HybridQuestionTextOptionFragment() {}
 
@@ -71,7 +70,7 @@ public class HybridQuestionTextOptionFragment extends Fragment {
         setListener(option3);
         setListener(option4);
 
-        nextTextView.setOnClickListener(v -> mFlow.onAnswerSelect(selectedAns));
+        nextTextView.setOnClickListener(v -> mFlow.onAnswerSelect(answerRecord));
 
         return view;
     }
@@ -79,11 +78,11 @@ public class HybridQuestionTextOptionFragment extends Fragment {
     private void setListener(final TextView textView) {
         textView.setOnClickListener(v -> {
             String ans = ((TextView) v).getText().toString();
-            if(selectedAns.contains(ans)) {
-                selectedAns.remove(ans);
+            if(answerRecord.contains(ans)) {
+                answerRecord.removeAnswer(ans);
                 textView.setBackgroundColor(getResources().getColor(R.color.white));
             } else {
-                selectedAns.add(ans);
+                answerRecord.addAnswer(ans);
                 textView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             }
         });
