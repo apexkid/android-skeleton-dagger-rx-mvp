@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,14 +8,16 @@
     tools:context=".activityUI.Game4Activity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/question_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/game_question"
         android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
         android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,12 +29,12 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/question_title"
         app:cardCornerRadius="32dp"
         android:elevation="4dp">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/imageView_question"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_gravity="center"
@@ -54,7 +57,7 @@
         android:scaleY="1">
 
         <ImageView
-            android:id="@+id/image1"
+            android:id="@+id/imageView_option_1"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:src="@drawable/headphone1"
@@ -86,7 +89,7 @@
         android:scaleY="1">
 
         <ImageView
-            android:id="@+id/image2"
+            android:id="@+id/imageView_option_2"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:src="@drawable/headphone2"
@@ -118,7 +121,7 @@
         android:scaleY="1">
 
         <ImageView
-            android:id="@+id/image3"
+            android:id="@+id/imageView_option_3"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:src="@drawable/headphone3"
@@ -150,7 +153,7 @@
         android:scaleY="1">
 
         <ImageView
-            android:id="@+id/image4"
+            android:id="@+id/imageView_option_4"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:src="@drawable/phone"
@@ -168,7 +171,7 @@
     </androidx.cardview.widget.CardView>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circularImageView"
+        android:id="@+id/next_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
@@ -178,7 +181,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView4"
-        android:src="@drawable/ic_next"
-        android:visibility="invisible"/>
+        android:src="@drawable/ic_next" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

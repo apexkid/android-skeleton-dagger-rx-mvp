@@ -7,7 +7,7 @@
     tools:context=".activityUI.Game3Activity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/question_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -26,12 +26,12 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/question_title"
         app:cardCornerRadius="32dp"
         android:elevation="4dp">
 
         <ImageView
-            android:id="@+id/image1"
+            android:id="@+id/imageView_question"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_gravity="center"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/question_option_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -69,7 +69,7 @@
             android:layout_weight="0.5" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/question_option_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -93,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/question_option_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -112,7 +112,7 @@
             android:layout_weight="0.5" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/question_option_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -126,7 +126,7 @@
     </LinearLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circularImageView"
+        android:id="@+id/next_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"

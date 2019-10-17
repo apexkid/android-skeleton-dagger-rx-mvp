@@ -1,16 +1,13 @@
 
 package com.streetsmart.app.activityUI;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
-
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.streetsmart.app.R;
 
@@ -25,19 +22,19 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        Button button = findViewById(R.id.button);
+        Button button = findViewById(R.id.question_option_1);
         button.setOnTouchListener(createOnTouchListener(button));
         button.setOnClickListener(createOnClickListener());
 
-        Button button2 = findViewById(R.id.button2);
+        Button button2 = findViewById(R.id.question_option_2);
         button2.setOnTouchListener(createOnTouchListener(button2));
         button2.setOnClickListener(createOnClickListener());
 
-        Button button3 = findViewById(R.id.button3);
+        Button button3 = findViewById(R.id.question_option_3);
         button3.setOnTouchListener(createOnTouchListener(button3));
         button3.setOnClickListener(createOnClickListener());
 
-        Button button4 = findViewById(R.id.button4);
+        Button button4 = findViewById(R.id.question_option_4);
         button4.setOnTouchListener(createOnTouchListener(button4));
         button4.setOnClickListener(createOnClickListener());
 

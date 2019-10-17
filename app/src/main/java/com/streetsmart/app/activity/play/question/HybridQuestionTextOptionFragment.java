@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,22 +29,22 @@ public class HybridQuestionTextOptionFragment extends Fragment {
     TextView questionTextView;
 
     @BindView(R.id.question_option_1)
-    TextView optionTextView1;
+    Button optionTextView1;
 
     @BindView(R.id.question_option_2)
-    TextView optionTextView2;
+    Button optionTextView2;
 
     @BindView(R.id.question_option_3)
-    TextView optionTextView3;
+    Button optionTextView3;
 
     @BindView(R.id.question_option_4)
-    TextView optionTextView4;
+    Button optionTextView4;
 
     @BindView(R.id.imageView_question)
     ImageView questionImageImageView;
 
     @BindView(R.id.next_button)
-    TextView nextTextView;
+    ImageView nextTextView;
 
     private String questionText;
     private String questionImageUrl;
@@ -95,7 +96,7 @@ public class HybridQuestionTextOptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_hybrid_question_text_option, container, false);
+        final View view = inflater.inflate(R.layout.activity_game3, container, false);
 
         ButterKnife.bind(this, view);
 

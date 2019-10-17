@@ -6,101 +6,166 @@
     android:layout_height="match_parent"
     tools:context=".activity.play.question.TextQuestionImageOptionFragment">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="0dp"
-        android:background="@color/colorPrimary">
+        tools:context=".activityUI.Game2Activity">
 
         <TextView
             android:id="@+id/question_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="100dp"
-            android:layout_margin="8dp"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:textColor="@color/colorPrimaryText"
-            android:text="This is a big questions. Can you answer it?" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/game_question"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="128dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_title"
+            app:cardCornerRadius="32dp"
+            android:elevation="4dp"
+            android:clickable="true"
+            android:scaleX="1"
+            android:scaleY="1">
 
             <ImageView
                 android:id="@+id/imageView_option_1"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:src="@drawable/headphone1"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/tick1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="16dp"
-                android:src="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.123" />
+                android:src="@drawable/ic_finish"
+                android:layout_gravity="center"
+                android:tint="@color/colorPrimaryDark"
+                android:visibility="invisible"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_title"
+            app:cardCornerRadius="32dp"
+            android:elevation="4dp"
+            android:clickable="true"
+            android:scaleX="1"
+            android:scaleY="1">
 
             <ImageView
                 android:id="@+id/imageView_option_2"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:src="@drawable/headphone2"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/tick2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginEnd="16dp"
-                android:src="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.123" />
+                android:src="@drawable/ic_finish"
+                android:layout_gravity="center"
+                android:tint="@color/colorPrimaryDark"
+                android:visibility="invisible"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:cardCornerRadius="32dp"
+            android:elevation="4dp"
+            android:clickable="true"
+            android:scaleX="1"
+            android:scaleY="1">
 
             <ImageView
                 android:id="@+id/imageView_option_3"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:src="@drawable/headphone3"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/tick3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:src="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_option_1"
-                app:layout_constraintVertical_bias="0.123" />
+                android:src="@drawable/ic_finish"
+                android:layout_gravity="center"
+                android:tint="@color/colorPrimaryDark"
+                android:visibility="invisible"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView4"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2"
+            app:cardCornerRadius="32dp"
+            android:elevation="4dp"
+            android:clickable="true"
+            android:scaleX="1"
+            android:scaleY="1">
 
             <ImageView
                 android:id="@+id/imageView_option_4"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:src="@drawable/phone"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/tick4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:src="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_option_2"
-                app:layout_constraintVertical_bias="0.123" />
+                android:src="@drawable/ic_finish"
+                android:layout_gravity="center"
+                android:tint="@color/colorPrimaryDark"
+                android:visibility="invisible"/>
 
+        </androidx.cardview.widget.CardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/next_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/selector_play"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView4"
+            android:src="@drawable/ic_next" />
 
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/next_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="32sp"
-                android:padding="16sp"
-                android:minHeight="30dp"
-                android:textColor="@color/white"
-                android:background="@color/colorAccent"
-                android:text="NEXT"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

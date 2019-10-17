@@ -44,7 +44,7 @@ public class HybridQuestionImageOptionFragment extends Fragment {
     ImageView imageViewOption4;
 
     @BindView(R.id.next_button)
-    TextView nextTextView;
+    ImageView nextTextView;
 
     private String questionText;
     private String questionImageUrl;
