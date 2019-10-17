@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.streetsmart.app.R;
 import com.streetsmart.app.activity.play.endgame.EndGameFragment;
+import com.streetsmart.app.activity.play.finalstate.FinalStateFragment;
 import com.streetsmart.app.activity.play.question.AllTextQuestionFragment;
 import com.streetsmart.app.activity.play.question.HybridQuestionImageOptionFragment;
 import com.streetsmart.app.activity.play.question.HybridQuestionTextOptionFragment;
@@ -190,6 +191,11 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         presenter.submitScore(questionList, answerList, "rahulvallu@gmail.com", getScoreForGameSessions());
     }
 
+    @Override
+    public void showFinalGameState() {
+        launchFinalStateFragment();
+    }
+
     private void launchStartGameFragment() {
         FragmentTransaction ft = fragmentManager.beginTransaction();
         this.startGameFragment = new StartGameFragment();
@@ -242,6 +248,16 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         endGameFragment = new EndGameFragment();
 
         ft.replace(R.id.question_layout_container, endGameFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
+    private void launchFinalStateFragment() {
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        FinalStateFragment fragment = new FinalStateFragment();
+
+        ft.replace(R.id.question_layout_container, fragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }

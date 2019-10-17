@@ -8,4 +8,5 @@ public interface PlayFragmentFlow {
     void onAnswerSelect(AnswerRecord answer);
     int getScoreForGameSessions();
     void submitScore();
+    void showFinalGameState();
 }

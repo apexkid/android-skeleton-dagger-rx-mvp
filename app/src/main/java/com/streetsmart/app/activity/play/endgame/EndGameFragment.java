@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 
 import com.streetsmart.app.R;
 import com.streetsmart.app.activity.play.PlayFragmentFlow;
-import com.streetsmart.app.utils.IntentWrapper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,8 +60,7 @@ public class EndGameFragment extends Fragment {
 
 
         endPlay.setOnClickListener(v -> {
-            IntentWrapper.startDashboardActivity(getActivity());
-            getActivity().finish();
+            mFlow.showFinalGameState();
         });
 
         fetchScore();
