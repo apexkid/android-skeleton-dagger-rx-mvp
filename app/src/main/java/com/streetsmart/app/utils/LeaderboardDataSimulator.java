@@ -70,6 +70,20 @@ public class LeaderboardDataSimulator {
         lr8.setImage(R.drawable.steve);
         leaderboardList.add(lr8);
 
+        final LeaderboardRecord lr9 = new LeaderboardRecord();
+        lr9.setRank(9);
+        lr9.setPoints(5700);
+        lr9.setName("Sachin Bansal");
+        lr9.setImage(R.drawable.billy);
+        leaderboardList.add(lr9);
+
+        final LeaderboardRecord lr10 = new LeaderboardRecord();
+        lr10.setRank(10);
+        lr10.setPoints(4100);
+        lr10.setName("Mukesh Ambani");
+        lr10.setImage(R.drawable.richardfeynman);
+        leaderboardList.add(lr10);
+
     }
 
     public static List<LeaderboardRecord> getData() {
