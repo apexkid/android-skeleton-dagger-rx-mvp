@@ -5,11 +5,9 @@ import android.widget.Button;
 
 import com.streetsmart.app.R;
 import com.streetsmart.app.activity.BaseActivity;
-import com.streetsmart.app.utils.IntentWrapper;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DashboardActivity extends BaseActivity implements DashboardMVP.View {
@@ -17,7 +15,7 @@ public class DashboardActivity extends BaseActivity implements DashboardMVP.View
     @Inject
     DashboardMVP.Presenter presenter;
 
-    @BindView(R.id.button_play_now)
+    //@BindView(R.id.button_play_now)
     Button playNowButton;
 
     @Override
@@ -29,7 +27,7 @@ public class DashboardActivity extends BaseActivity implements DashboardMVP.View
 
         initBottomNavigation(this, 0);
 
-        playNowButton.setOnClickListener(v -> IntentWrapper.startPlayActivity(this));
+        //playNowButton.setOnClickListener(v -> IntentWrapper.startPlayActivity(this));
     }
 
     @Override
