@@ -41,7 +41,8 @@ public class TextQuestionImageOptionFragment extends Fragment {
     ImageView imageViewOption4;
 
     @BindView(R.id.next_button)
-    TextView nextTextView;
+    ImageView nextTextView;
+    //TextView nextTextView;
 
     private String questionText;
     private String option1;
@@ -84,7 +85,7 @@ public class TextQuestionImageOptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_text_question_image_option, container, false);
+        View view = inflater.inflate(R.layout.activity_game2, container, false);
 
         ButterKnife.bind(this, view);
 

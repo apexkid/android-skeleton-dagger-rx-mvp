@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -26,19 +28,19 @@ public class AllTextQuestionFragment extends Fragment {
     TextView questionTextView;
 
     @BindView(R.id.question_option_1)
-    TextView optionTextView1;
+    Button optionTextView1;
 
     @BindView(R.id.question_option_2)
-    TextView optionTextView2;
+    Button optionTextView2;
 
     @BindView(R.id.question_option_3)
-    TextView optionTextView3;
+    Button optionTextView3;
 
     @BindView(R.id.question_option_4)
-    TextView optionTextView4;
+    Button optionTextView4;
 
     @BindView(R.id.next_button)
-    TextView nextTextView;
+    ImageView nextTextView;
 
     private PlayFragmentFlow mFlow;
     private AnswerRecord answerRecord = new AnswerRecord();
