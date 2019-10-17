@@ -14,36 +14,36 @@ public class LeaderboardDataSimulator {
         final LeaderboardRecord lr1 = new LeaderboardRecord();
         lr1.setRank(1);
         lr1.setPoints(11928);
-        lr1.setName("Walter white");
-        lr1.setImage(R.drawable.jeff);
+        lr1.setName("Walter White");
+        lr1.setImage(R.drawable.walterwhite);
         leaderboardList.add(lr1);
 
         final LeaderboardRecord lr2 = new LeaderboardRecord();
         lr2.setRank(2);
         lr2.setPoints(9877);
         lr2.setName("Bruce Wayne");
-        lr2.setImage(R.drawable.jeff);
+        lr2.setImage(R.drawable.brucewayne);
         leaderboardList.add(lr2);
 
         final LeaderboardRecord lr3 = new LeaderboardRecord();
         lr3.setRank(3);
         lr3.setPoints(9088);
-        lr3.setName("Richard Finman");
-        lr3.setImage(R.drawable.jeff);
+        lr3.setName("Richard Feynman");
+        lr3.setImage(R.drawable.richardfeynman);
         leaderboardList.add(lr3);
 
         final LeaderboardRecord lr4 = new LeaderboardRecord();
         lr4.setRank(4);
         lr4.setPoints(8899);
-        lr4.setName("Issac Newton");
-        lr4.setImage(R.drawable.jeff);
+        lr4.setName("Donald Trump");
+        lr4.setImage(R.drawable.trump);
         leaderboardList.add(lr4);
 
         final LeaderboardRecord lr5 = new LeaderboardRecord();
         lr5.setRank(5);
         lr5.setPoints(8090);
-        lr5.setName("Billy Joe");
-        lr5.setImage(R.drawable.jeff);
+        lr5.setName("Billy Joel");
+        lr5.setImage(R.drawable.billy);
         leaderboardList.add(lr5);
 
 
@@ -51,15 +51,15 @@ public class LeaderboardDataSimulator {
         lr6.setRank(6);
         lr6.setPoints(7344);
         lr6.setName("Drake Reymore");
-        lr6.setImage(R.drawable.jeff);
+        lr6.setImage(R.drawable.drake);
         leaderboardList.add(lr6);
 
 
         final LeaderboardRecord lr7 = new LeaderboardRecord();
         lr7.setRank(7);
         lr7.setPoints(6900);
-        lr7.setName("Wakanda Willson");
-        lr7.setImage(R.drawable.jeff);
+        lr7.setName("Doug McMillon");
+        lr7.setImage(R.drawable.doug);
         leaderboardList.add(lr7);
 
 
@@ -67,7 +67,7 @@ public class LeaderboardDataSimulator {
         lr8.setRank(8);
         lr8.setPoints(6100);
         lr8.setName("Steve Rogers");
-        lr8.setImage(R.drawable.jeff);
+        lr8.setImage(R.drawable.steve);
         leaderboardList.add(lr8);
 
     }

@@ -46,7 +46,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     private CountDownTimer countdown;
 
-    private static final int GAME_TIME_IN_SECONDS = 30;
+    private static final int GAME_TIME_IN_SECONDS = 45;
     private static int GAME_QUESTIONS_COUNT = 10;
 
     private int questionsAnswered = 0;
