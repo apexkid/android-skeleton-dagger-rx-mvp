@@ -26,6 +26,7 @@ import com.streetsmart.app.utils.PlayUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.inject.Inject;
 
@@ -33,6 +34,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PlayActivity extends AppCompatActivity implements PlayMVP.View, PlayFragmentFlow {
+
+    private static List<String> hurrayText = new ArrayList<>();
+
+    static {
+        hurrayText.add("Yay");
+        hurrayText.add("Going well");
+        hurrayText.add("Nice!");
+        hurrayText.add("Superb");
+        hurrayText.add("Awesome..");
+    }
 
     @Inject
     PlayMVP.Presenter presenter;
@@ -170,7 +181,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         answerList.add(answer);
         questionsAnswered++;
         questionCountTextView.setText(questionsAnswered + " / " + GAME_QUESTIONS_COUNT);
-        Toast.makeText(this, "Answer selected=" + answer.getAnswers().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getToastText(), Toast.LENGTH_SHORT).show();
 
         if (questionsAnswered == GAME_QUESTIONS_COUNT) {
             countdown.cancel();
@@ -179,6 +190,11 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         }
 
         launchFragmentForQuestion(questionList.get(questionsAnswered));
+    }
+
+    private String getToastText() {
+        int index = ThreadLocalRandom.current().nextInt(hurrayText.size());
+        return hurrayText.get(index);
     }
 
     private void updateAnswerIfRange(AnswerRecord answer) {
