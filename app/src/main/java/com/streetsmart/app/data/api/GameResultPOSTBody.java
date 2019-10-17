@@ -15,7 +15,7 @@ public class GameResultPOSTBody {
     private String endtime;
     private String totalpointsforgame;
 
-    private List<AnswerResult> answerlist;
+    private List<AnswerResult> answerslist;
 
     @Data
     @NoArgsConstructor
@@ -29,5 +29,6 @@ public class GameResultPOSTBody {
         private String is_selected;
         private String correct_answer;
         private String point_scored;
+        private String question_type;
     }
 }

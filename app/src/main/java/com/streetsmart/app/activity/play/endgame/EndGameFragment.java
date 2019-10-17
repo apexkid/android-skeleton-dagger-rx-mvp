@@ -75,6 +75,7 @@ public class EndGameFragment extends Fragment {
         int score = mFlow.getScoreForGameSessions();
         endGameStatusTextView.setText("Your score: " + score);
         progressBar.setVisibility(View.GONE);
+        mFlow.submitScore();
     }
 
     @Override
@@ -92,5 +93,17 @@ public class EndGameFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    public void showEndGameRefreshLoader(boolean status) {
+        if(status) {
+            progressBar.setVisibility(View.VISIBLE);
+            endGameStatusTextView.setText("Submitting your score...");
+            endGameStatusTextView.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+            endGameStatusTextView.setText("Submitting your score...");
+            endGameStatusTextView.setVisibility(View.GONE);
+        }
     }
 }

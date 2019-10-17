@@ -3,7 +3,12 @@ package com.streetsmart.app.activity.play;
 import android.util.Log;
 
 import com.streetsmart.app.activity.api.APIService;
+import com.streetsmart.app.data.AnswerRecord;
+import com.streetsmart.app.data.api.GameResultPOSTBody;
 import com.streetsmart.app.data.api.QuestionForUser;
+import com.streetsmart.app.utils.GameResultPOSTBodyXmer;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -36,11 +41,6 @@ public class PlayPresenter implements PlayMVP.Presenter {
         this.view = null;
     }
 
-    @Override
-    public void subscribeData() {
-        Log.v(TAG, "Starting to subscribe data");
-        view.showRefreshLoader(true);
-    }
 
     @Override
     public void unsubscribeData() {
@@ -79,6 +79,24 @@ public class PlayPresenter implements PlayMVP.Presenter {
                         }
                     });
         }
+    }
+
+    @Override
+    public void submitScore(List<QuestionForUser> questionList, List<AnswerRecord> answerList, String userId, int scoreForGameSessions) {
+        final GameResultPOSTBody result = GameResultPOSTBodyXmer.createGameResultPostBody(questionList, answerList, userId, scoreForGameSessions);
+
+        Log.v(TAG, "Result to submit=" + result);
+        disposable = apiService.submitGameResults(result)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(() -> {
+                    Log.v(TAG, "Successfully submitted result");
+                    view.showRefreshLoaderOnEndGame(false);
+                }, error -> {
+                    view.showRefreshLoaderOnEndGame(true);
+                    Log.e(TAG, "Error in submit game result", error);
+                    error.printStackTrace();
+                });
     }
 
     private Observable<QuestionForUser> getQuestionForUser(String userId) {
