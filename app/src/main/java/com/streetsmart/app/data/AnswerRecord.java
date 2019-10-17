@@ -27,4 +27,9 @@ public class AnswerRecord {
     public boolean contains(String ans) {
         return answers.contains(ans);
     }
+
+    public void clearAndUpdate(String ans) {
+        answers.clear();
+        answers.add(ans);
+    }
 }

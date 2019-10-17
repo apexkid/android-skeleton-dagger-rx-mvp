@@ -166,6 +166,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     @Override
     public void onAnswerSelect(AnswerRecord answer) {
+        updateAnswerIfRange(answer);
         answerList.add(answer);
         questionsAnswered++;
         questionCountTextView.setText(questionsAnswered + " / " + GAME_QUESTIONS_COUNT);
@@ -178,6 +179,22 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
         }
 
         launchFragmentForQuestion(questionList.get(questionsAnswered));
+    }
+
+    private void updateAnswerIfRange(AnswerRecord answer) {
+        try {
+            if (answer != null && answer.getAnswers().size() > 0) {
+                String ans = answer.getAnswers().iterator().next();
+                if (ans.contains("-")) {
+                    String[] result = ans.split("-", -1);
+                    int x = Integer.parseInt(result[0]);
+                    int y = Integer.parseInt(result[1]);
+                    answer.clearAndUpdate(String.valueOf((int)((x+y)/2)));
+                }
+            }
+        } catch (Exception e) {
+            Log.v("ERROR", "updateAnswerIfRange");
+        }
     }
 
     @Override
