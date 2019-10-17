@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.streetsmart.app.activity.dashboard.DashboardModule;
+import com.streetsmart.app.activity.play.PlayModule;
 
 import lombok.Getter;
 
@@ -23,6 +24,7 @@ public class StreetsmartApp extends Application {
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .dashboardModule(new DashboardModule())
+                .playModule(new PlayModule())
                 .build();
 
         if (context == null) {

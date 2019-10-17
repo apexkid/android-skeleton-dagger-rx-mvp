@@ -23,6 +23,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    android {
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+
 }
 
 dependencies {
@@ -78,5 +86,13 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:${glideVersionValue}"
     implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersionValue}"
 
+    // BottomNav
+    implementation 'com.aurelhubert:ahbottomnavigation:2.3.4'
 
+    // circular images
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+    // utilities
+    implementation 'org.apache.commons:commons-lang3:3.6'
+    implementation 'org.apache.commons:commons-collections4:4.1'
 }

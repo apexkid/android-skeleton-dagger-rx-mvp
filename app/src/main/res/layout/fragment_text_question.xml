@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.play.question.AllTextQuestionFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/question_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:layout_margin="8dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryText"
+            android:text="This is a big questions. Can you answer it?" />
+
+        <TextView
+            android:id="@+id/question_option_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:layout_margin="16dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:textColor="@color/colorSecondaryText"
+            android:text="This is option A" />
+
+        <TextView
+            android:id="@+id/question_option_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:layout_margin="16dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:textColor="@color/colorSecondaryText"
+            android:text="This is option B" />
+
+        <TextView
+            android:id="@+id/question_option_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:layout_margin="16dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:textColor="@color/colorSecondaryText"
+            android:text="This is option C" />
+
+        <TextView
+            android:id="@+id/question_option_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:layout_margin="16dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:textColor="@color/colorSecondaryText"
+            android:text="This is option D" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:padding="16sp"
+                android:minHeight="30dp"
+                android:textColor="@color/white"
+                android:background="@color/colorAccent"
+                android:text="NEXT"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
