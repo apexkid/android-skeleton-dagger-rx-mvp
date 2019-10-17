@@ -2,7 +2,10 @@ package com.streetsmart.app.activity.play.finalstate;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,9 @@ import com.streetsmart.app.utils.IntentWrapper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
 
 public class FinalStateFragment extends Fragment {
 
@@ -33,6 +39,9 @@ public class FinalStateFragment extends Fragment {
 
     @BindView(R.id.textView3)
     TextView textView3;
+
+    @BindView(R.id.viewKonfetti)
+    KonfettiView viewKonfetti;
 
     public static FinalStateFragment newInstance(String param1, String param2) {
         FinalStateFragment fragment = new FinalStateFragment();
@@ -62,7 +71,31 @@ public class FinalStateFragment extends Fragment {
         startCountAnimation(textView3, 10, 14);
         startCountAnimation(textView, 150, 112);
         startCountAnimation(textView2, 1800, 2100);
+
+        showKonfettie();
+
         return view;
+    }
+
+    private void showKonfettie() {
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        float width = size.x;
+        float height = size.y;
+
+
+        viewKonfetti.build()
+                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                .setDirection(90.0, 90.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(1000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(new Size(12, 5))
+                .setPosition(0, width, 0f, 0f)
+                .streamFor(300, 5000L);
+
     }
 
     @Override
