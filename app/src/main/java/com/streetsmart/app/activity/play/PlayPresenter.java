@@ -86,6 +86,7 @@ public class PlayPresenter implements PlayMVP.Presenter {
         final GameResultPOSTBody result = GameResultPOSTBodyXmer.createGameResultPostBody(questionList, answerList, userId, scoreForGameSessions);
 
         Log.v(TAG, "Result to submit=" + result);
+        view.showRefreshLoaderOnEndGame(true);
         disposable = apiService.submitGameResults(result)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -7,6 +7,7 @@ import com.streetsmart.app.data.api.QuestionForUser;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
 
 public class GameResultPOSTBodyXmer {
     public static GameResultPOSTBody createGameResultPostBody(List<QuestionForUser> questionList,
@@ -15,7 +16,7 @@ public class GameResultPOSTBodyXmer {
 
         final GameResultPOSTBody output = new GameResultPOSTBody();
         output.setUserid(userId);
-        output.setGameid("XXX-YY-11-22");
+        output.setGameid(UUID.randomUUID().toString());
         output.setTotalpointsforgame(String.valueOf(scoreForGameSessions));
         output.setStarttime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
         output.setEndtime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
@@ -54,6 +55,11 @@ public class GameResultPOSTBodyXmer {
 
             if(answerRecord != null) {
                 // TODO write logic for selected ans.
+                if(answerRecord.getAnswers().contains(ans.getOption_text()) || answerRecord.getAnswers().contains(ans.getOption_image_url())) {
+                    ans.setIs_selected("y");
+                } else {
+                    ans.setIs_selected("n");
+                }
             }
 
             output.add(ans);

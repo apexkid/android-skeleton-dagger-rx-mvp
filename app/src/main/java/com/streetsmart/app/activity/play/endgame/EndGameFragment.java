@@ -74,6 +74,7 @@ public class EndGameFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
         int score = mFlow.getScoreForGameSessions();
         endGameStatusTextView.setText("Your score: " + score);
+        endGameStatusTextView.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
         mFlow.submitScore();
     }
@@ -102,8 +103,10 @@ public class EndGameFragment extends Fragment {
             endGameStatusTextView.setVisibility(View.VISIBLE);
         } else {
             progressBar.setVisibility(View.GONE);
-            endGameStatusTextView.setText("Submitting your score...");
-            endGameStatusTextView.setVisibility(View.GONE);
+            int score = mFlow.getScoreForGameSessions();
+            endGameStatusTextView.setText("Your score: " + score);
+            endGameStatusTextView.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
         }
     }
 }
