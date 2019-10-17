@@ -9,5 +9,10 @@
     <color name="colorSecondaryText">#757575</color>
     <color name="colorDividerColor">#BDBDBD</color>
 
+    <color name="userTagPrimary">#800080</color>
+    <color name="leaderboardPrimary">#8B4513</color>
+    <color name="coinsPrimary">#FFDF00</color>
+
+    <color name="colorWhite">#FFFFFFFF</color>
     <color name="white">#FFFFFF</color>
 </resources>
