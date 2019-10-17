@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.streetsmart.app.R;
 import com.streetsmart.app.activity.BaseActivity;
+import com.streetsmart.app.activityUI.CreateOnTouchListener;
 import com.streetsmart.app.utils.IntentWrapper;
 
 import javax.inject.Inject;
@@ -28,7 +29,10 @@ public class DashboardActivity extends BaseActivity implements DashboardMVP.View
         ButterKnife.bind(this);
 
         initBottomNavigation(this, 0);
+
+        playNowButton.setOnTouchListener(CreateOnTouchListener.createOnTouchListener(playNowButton));
         playNowButton.setOnClickListener(v -> IntentWrapper.startPlayActivity(this));
+
     }
 
     @Override
