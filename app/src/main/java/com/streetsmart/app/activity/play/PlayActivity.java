@@ -2,6 +2,7 @@ package com.streetsmart.app.activity.play;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -179,6 +180,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     @Override
     public int getScoreForGameSessions() {
+        Log.v("PlayActivity", "QuestionList=" + questionList + " ..Answers:=" + answerList);
         return PlayUtils.getScore(questionList, answerList, (int) timeRemainingInSeconds);
     }
 

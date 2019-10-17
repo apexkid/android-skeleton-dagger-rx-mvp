@@ -79,7 +79,6 @@ public class PlayPresenter implements PlayMVP.Presenter {
                         }
                     });
         }
-
     }
 
     private Observable<QuestionForUser> getQuestionForUser(String userId) {

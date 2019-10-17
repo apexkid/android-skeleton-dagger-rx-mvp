@@ -11,5 +11,5 @@ import retrofit2.http.Query;
 public interface APIService {
 
     @GET("getquestionsforuser")
-    Observable<List<QuestionForUser>> getQuestionForUser(@Query("userId") String userId);
+    Observable<List<QuestionForUser>> getQuestionForUser(@Query("userid") String userId);
 }
