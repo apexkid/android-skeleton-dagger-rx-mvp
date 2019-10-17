@@ -28,7 +28,6 @@ public class DashboardActivity extends BaseActivity implements DashboardMVP.View
         ButterKnife.bind(this);
 
         initBottomNavigation(this, 0);
-
         playNowButton.setOnClickListener(v -> IntentWrapper.startPlayActivity(this));
     }
 
