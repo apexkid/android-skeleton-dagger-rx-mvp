@@ -1,11 +1,13 @@
 package com.streetsmart.app.activity.play.finalstate;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -22,6 +24,15 @@ public class FinalStateFragment extends Fragment {
 
     @BindView(R.id.button_home)
     Button goHomeButton;
+
+    @BindView(R.id.textView)
+    TextView textView;
+
+    @BindView(R.id.textView_score_status)
+    TextView textView2;
+
+    @BindView(R.id.textView3)
+    TextView textView3;
 
     public static FinalStateFragment newInstance(String param1, String param2) {
         FinalStateFragment fragment = new FinalStateFragment();
@@ -48,6 +59,9 @@ public class FinalStateFragment extends Fragment {
             IntentWrapper.startDashboardActivity(getActivity());
             getActivity().finish();
         });
+        startCountAnimation(textView3, 10, 14);
+        startCountAnimation(textView, 150, 112);
+        startCountAnimation(textView2, 1800, 2100);
         return view;
     }
 
@@ -66,5 +80,16 @@ public class FinalStateFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    private void startCountAnimation(final TextView textView, int init, int fin) {
+        ValueAnimator animator = ValueAnimator.ofInt(init, fin);
+        animator.setDuration(2000);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            public void onAnimationUpdate(ValueAnimator animation) {
+                textView.setText(animation.getAnimatedValue().toString());
+            }
+        });
+        animator.start();
     }
 }
