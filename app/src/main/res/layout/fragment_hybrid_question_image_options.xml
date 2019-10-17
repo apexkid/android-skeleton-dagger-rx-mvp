@@ -28,8 +28,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,8 +39,8 @@
 
             <ImageView
                 android:id="@+id/imageView_question"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_gravity="center"
                 android:src="@drawable/headphone1" />
 
@@ -48,8 +48,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,15 +62,15 @@
 
             <ImageView
                 android:id="@+id/imageView_option_1"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:src="@drawable/headphone1"
                 android:layout_gravity="center"/>
 
             <ImageView
                 android:id="@+id/tick1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_finish"
                 android:layout_gravity="center"
                 android:tint="@color/colorPrimaryDark"
@@ -80,8 +80,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,15 +94,15 @@
 
             <ImageView
                 android:id="@+id/imageView_option_2"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:src="@drawable/headphone2"
                 android:layout_gravity="center"/>
 
             <ImageView
                 android:id="@+id/tick2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_finish"
                 android:layout_gravity="center"
                 android:tint="@color/colorPrimaryDark"
@@ -112,8 +112,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,15 +126,15 @@
 
             <ImageView
                 android:id="@+id/imageView_option_3"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:src="@drawable/headphone3"
                 android:layout_gravity="center"/>
 
             <ImageView
                 android:id="@+id/tick3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_finish"
                 android:layout_gravity="center"
                 android:tint="@color/colorPrimaryDark"
@@ -144,8 +144,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView4"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -158,15 +158,15 @@
 
             <ImageView
                 android:id="@+id/imageView_option_4"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:src="@drawable/phone"
                 android:layout_gravity="center"/>
 
             <ImageView
                 android:id="@+id/tick4"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_finish"
                 android:layout_gravity="center"
                 android:tint="@color/colorPrimaryDark"
