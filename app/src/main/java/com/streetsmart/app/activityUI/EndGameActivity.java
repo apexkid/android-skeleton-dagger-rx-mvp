@@ -5,11 +5,17 @@ import androidx.cardview.widget.CardView;
 
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 
 import com.streetsmart.app.R;
+
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
 
 public class EndGameActivity extends AppCompatActivity {
 
@@ -29,6 +35,24 @@ public class EndGameActivity extends AppCompatActivity {
 
         TextView textView2 = findViewById(R.id.textView2);
         startCountAnimation(textView2, 0, 50);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        float width = size.x;
+        float height = size.y;
+
+        nl.dionsegijn.konfetti.KonfettiView viewKonfetti = findViewById(R.id.viewKonfetti);
+        viewKonfetti.build()
+                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                .setDirection(90.0, 90.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(1000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(new Size(12, 5))
+                .setPosition(0, width, 0f, 0f)
+                .streamFor(300, 5000L);
     }
 
     public void onClickSubmit(View view) {
