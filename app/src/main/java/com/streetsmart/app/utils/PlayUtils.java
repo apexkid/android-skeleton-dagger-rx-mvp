@@ -35,9 +35,13 @@ public class PlayUtils {
 
             if(isCorrectAnswer(ques, ans)) {
                 numberOfCorrectAnswers++;
+                Log.v(TAG, "Right answer for ques=" + ques + " ans=" + ans);
+            } else {
+                Log.v(TAG, "Wrong answer for ques=" + ques + " ans=" + ans);
             }
         }
         if(numberOfCorrectAnswers > 0) {
+            Log.v(TAG, "numberOfCorrectAnswers=" + numberOfCorrectAnswers);
             return (numberOfCorrectAnswers * SCORE_FACTOR) + (timeRemainingInSeconds * TIME_FACTOR);
         } else {
             return 0;

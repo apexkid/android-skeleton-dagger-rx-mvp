@@ -2,6 +2,7 @@ package com.streetsmart.app.activity.play;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
 
     private StartGameFragment startGameFragment;
+    private EndGameFragment endGameFragment;
 
     private List<QuestionForUser> questionList = new ArrayList<>();
     private List<AnswerRecord> answerList = new ArrayList<>();
@@ -82,11 +84,6 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     public void cancelGame() {
         IntentWrapper.startDashboardActivity(this);
         finish();
-    }
-
-    @Override
-    public void showRefreshLoader(boolean loadingStatus) {
-
     }
 
     @Override
@@ -126,6 +123,11 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
             }
         };
         countdown.start();
+    }
+
+    @Override
+    public void showRefreshLoaderOnEndGame(boolean b) {
+        endGameFragment.showEndGameRefreshLoader(b);
     }
 
     private void launchFragmentForQuestion(QuestionForUser question) {
@@ -179,7 +181,13 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
 
     @Override
     public int getScoreForGameSessions() {
+        Log.v("PlayActivity", "QuestionList=" + questionList + " ..Answers:=" + answerList);
         return PlayUtils.getScore(questionList, answerList, (int) timeRemainingInSeconds);
+    }
+
+    @Override
+    public void submitScore() {
+        presenter.submitScore(questionList, answerList, "rahulvallu@gmail.com", getScoreForGameSessions());
     }
 
     private void launchStartGameFragment() {
@@ -231,7 +239,7 @@ public class PlayActivity extends AppCompatActivity implements PlayMVP.View, Pla
     private void launchEndGameFragment() {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        final EndGameFragment endGameFragment = new EndGameFragment();
+        endGameFragment = new EndGameFragment();
 
         ft.replace(R.id.question_layout_container, endGameFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

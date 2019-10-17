@@ -7,4 +7,5 @@ public interface PlayFragmentFlow {
     void cancelGame();
     void onAnswerSelect(AnswerRecord answer);
     int getScoreForGameSessions();
+    void submitScore();
 }

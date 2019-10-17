@@ -12,6 +12,7 @@ public class QuestionForUser {
     private String questionText;
     private String questionId;
     private String questionTag;
+    private String questionType;
     private String questionImageUrl;
     private List<Options> optionList;
 
