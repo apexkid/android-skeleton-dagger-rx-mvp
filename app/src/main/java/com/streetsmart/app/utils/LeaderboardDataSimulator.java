@@ -84,12 +84,12 @@ public class LeaderboardDataSimulator {
         lr10.setImage(R.drawable.richardfeynman);
         leaderboardList.add(lr10);
 
-        final LeaderboardRecord lr11 = new LeaderboardRecord();
-        lr11.setRank(11);
-        lr11.setPoints(4000);
-        lr11.setName("Sachin Tendulkar");
-        lr11.setImage(R.drawable.brucewayne);
-        leaderboardList.add(lr11);
+//        final LeaderboardRecord lr11 = new LeaderboardRecord();
+//        lr11.setRank(11);
+//        lr11.setPoints(4000);
+//        lr11.setName("Sachin Tendulkar");
+//        lr11.setImage(R.drawable.brucewayne);
+//        leaderboardList.add(lr11);
 
     }
 
