@@ -1,13 +1,16 @@
 package com.streetsmart.app.activityUI;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.streetsmart.app.R;
+import com.streetsmart.app.utils.IntentWrapper;
 
 public class SplashScreenUIActivity extends AppCompatActivity {
 
@@ -22,5 +25,15 @@ public class SplashScreenUIActivity extends AppCompatActivity {
         ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout_splash);
         constraintLayout.clearAnimation();
         constraintLayout.startAnimation(a);
+
+
+        new CountDownTimer(3 * 1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                Log.v("SplashScreenUIActivity", "countdown" + millisUntilFinished);
+            }
+            public void onFinish() {
+                IntentWrapper.startDashboardActivity(SplashScreenUIActivity.this);
+            }
+        }.start();
     }
 }
