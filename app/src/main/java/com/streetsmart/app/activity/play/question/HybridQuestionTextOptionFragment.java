@@ -130,10 +130,10 @@ public class HybridQuestionTextOptionFragment extends Fragment {
             String ans = ((TextView) v).getText().toString();
             if(answerRecord.contains(ans)) {
                 answerRecord.removeAnswer(ans);
-                textView.setBackgroundColor(getResources().getColor(R.color.white));
+                textView.setBackground(getResources().getDrawable(R.drawable.rounded_corner));
             } else {
                 answerRecord.addAnswer(ans);
-                textView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                textView.setBackground(getResources().getDrawable(R.drawable.rounded_corner_colored_accent));
             }
         });
     }
