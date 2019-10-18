@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activityUI.EndGameActivity"></activity>
+        <activity android:name=".activityUI.SplashScreenUIActivity"></activity>
+        <activity android:name=".activityUI.EndGameActivity" />
         <activity android:name=".activityUI.Game5Activity" />
         <activity android:name=".activityUI.Game4Activity" />
         <activity android:name=".activityUI.Game3Activity" />
@@ -26,12 +27,14 @@
             android:name=".activity.leaderboard.LeaderboardActivity"
             android:label="Leaderboard"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/NavigationTheme"/>
         <activity
             android:name=".activity.rewards.RewardsActivity"
             android:label="My Rewards"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/NavigationTheme"/>
         <activity
             android:name=".activity.play.PlayActivity"
             android:label="Play"
@@ -41,7 +44,8 @@
             android:name=".activity.dashboard.DashboardActivity"
             android:label="Dashboard"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/NavigationTheme"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -32,4 +32,6 @@
     <string name="lose">Oops! You Lose!</string>
     <string name="new_reward_unlocked">New Reward Unlocked!</string>
     <string name="go_to_home">Go To Home</string>
+    <string name="splash_title">Street Smart</string>
+    <string name="splash_text">Smart Quiz For Smart Shoppers</string>
 </resources>
