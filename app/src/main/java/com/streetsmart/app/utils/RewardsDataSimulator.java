@@ -15,7 +15,7 @@ public class RewardsDataSimulator {
         rr.setRewardPoint(2000);
         rr.setRewardTitle("Shopper Ninja");
         rr.setRewardType("Cashback");
-        rr.setRewardValue("500");
+        rr.setRewardValue("₹800");
         rr.setImage(R.drawable.undraw_gift1);
         rewards.add(rr);
 
@@ -32,7 +32,7 @@ public class RewardsDataSimulator {
         rr3.setRewardPoint(1300);
         rr3.setRewardTitle("Loyal and unstoppable");
         rr3.setRewardType("Gift card");
-        rr3.setRewardValue("200");
+        rr3.setRewardValue("₹900");
         rr3.setImage(R.drawable.undraw_gift_card);
         rewards.add(rr3);
 
@@ -41,7 +41,7 @@ public class RewardsDataSimulator {
         rr4.setRewardPoint(1200);
         rr4.setRewardTitle("Bag it all!");
         rr4.setRewardType("Cashback");
-        rr4.setRewardValue("50");
+        rr4.setRewardValue("5%");
         rr4.setImage(R.drawable.undraw_xmas);
         rewards.add(rr4);
 
@@ -50,7 +50,7 @@ public class RewardsDataSimulator {
         rr5.setRewardPoint(900);
         rr5.setRewardTitle("Reward Junkie");
         rr5.setRewardType("Discount Coupon");
-        rr5.setRewardValue("5%");
+        rr5.setRewardValue("₹500");
         rr5.setImage(R.drawable.undraw_gift_card);
         rewards.add(rr5);
 
@@ -59,7 +59,7 @@ public class RewardsDataSimulator {
         rr6.setRewardPoint(750);
         rr6.setRewardTitle("Day 1 shopper");
         rr6.setRewardType("Free shipping");
-        rr6.setRewardValue("100");
+        rr6.setRewardValue("₹500");
         rr6.setImage(R.drawable.undraw_gift1);
         rewards.add(rr6);
 
@@ -68,7 +68,7 @@ public class RewardsDataSimulator {
         rr7.setRewardPoint(500);
         rr7.setRewardTitle("Window shopper");
         rr7.setRewardType("Cashback");
-        rr7.setRewardValue("100");
+        rr7.setRewardValue("5%");
         rr7.setImage(R.drawable.undraw_gift2);
         rewards.add(rr7);
 
@@ -77,7 +77,7 @@ public class RewardsDataSimulator {
         rr8.setRewardPoint(250);
         rr8.setRewardTitle("Street novice");
         rr8.setRewardType("Instant discount");
-        rr8.setRewardValue("50");
+        rr8.setRewardValue("₹400");
         rr8.setImage(R.drawable.undraw_xmas);
         rewards.add(rr8);
 
